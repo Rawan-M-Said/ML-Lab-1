@@ -85,7 +85,7 @@ class DecisionTree:
         for label in np.unique(y):
             class_counts[label] = np.sum(sample_weights[np.where(y == label)])
 
-        return {"leaf": max(class_counts, key=class_counts.get)}
+        return {"leaf": max(class_counts, key=class_counts.get), "error": class_counts[min(class_counts, key=class_counts.get)]}
 
     def _best_split(self, X, y, sample_weights):
         best_gain = -1
